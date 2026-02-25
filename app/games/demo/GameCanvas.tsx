@@ -11,12 +11,16 @@ export default function GameCanvas() {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    setSize({
+      width: window.visualViewport?.width || window.innerWidth,
+      height: window.visualViewport?.height || window.innerHeight,
+    });
     const observer = new ResizeObserver((entries) => {
       const { width, height } = entries[0].contentRect;
 
       setSize({
         width,
-        height: height || 500,
+        height: height || 300,
       });
     });
 

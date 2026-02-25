@@ -6,7 +6,8 @@ import GameCanvas from "./GameCanvas";
 
 export default function GamePage() {
   return (
-    <div className="w-full min-h-[100dvh] bg-green-950 flex items-center justify-center overflow-hidden">
+    // <div className="w-full min-h-[100dvh]  flex items-center justify-center overflow-hidden">
+    <div className="w-full min-h-[100dvh]  flex items-center justify-center overflow-hidden">
       {/* <div className="w-full max-w-[1100px] aspect-[16/9]"> */}
       <div className="w-full max-w-[1100px]">
         <GameCanvas />

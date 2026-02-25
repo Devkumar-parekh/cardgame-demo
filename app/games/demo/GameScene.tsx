@@ -32,6 +32,7 @@ export default function GameScene({ width, height }: Props) {
   });
 
   return (
+    // <pixiContainer x={width / 2} y={height / 2} scale={scale}>
     <pixiContainer x={width / 2} y={height / 2} scale={scale}>
       {/* Table Background (centered world) */}
       <pixiGraphics
