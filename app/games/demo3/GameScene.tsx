@@ -39,7 +39,6 @@ export default function GameScene({ width, height }: Props) {
       <pixiGraphics
         draw={(g) => {
           g.clear();
-          // g.ellipse(600, 250, 80, 50);
           g.ellipse(
             // -BASE_WIDTH / 2,
             0,
@@ -84,11 +83,7 @@ export default function GameScene({ width, height }: Props) {
         <River x={220 * 3} y={0} cardtype={"DIAMONDS"} fill={"#930093"} />
       </pixiContainer> */}
 
-      <pixiContainer>
-        {/* MASK SHAPE */}
-
-        {/* ref={maskRef} */}
-
+      <pixiContainer ref={rivercontainer}>
         <pixiGraphics
           ref={maskRef}
           draw={(g) => {
@@ -105,7 +100,6 @@ export default function GameScene({ width, height }: Props) {
 
         <pixiContainer
           mask={maskRef.current}
-          ref={rivercontainer}
           x={-rivercontainer.current?.width / 2}
           // x={0}
           y={-rivercontainer.current?.height / 2}
