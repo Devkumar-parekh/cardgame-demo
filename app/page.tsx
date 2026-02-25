@@ -15,6 +15,12 @@ export default function Home() {
             Demo
           </Link>
         </div>
+
+        <div>
+          <Link className="hover:text-gray-400" href={"/games/demo2"}>
+            Demo 2
+          </Link>
+        </div>
       </div>
     </div>
   );

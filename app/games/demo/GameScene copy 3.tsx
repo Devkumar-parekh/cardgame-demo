@@ -40,22 +40,22 @@ export default function GameScene({ width, height }: Props) {
         draw={(g) => {
           g.clear();
           // g.ellipse(600, 250, 80, 50);
-          // g.ellipse(
-          //   // -BASE_WIDTH / 2,
-          //   0,
-          //   // -BASE_HEIGHT / 2,
-          //   // 0,
-          //   -(BASE_HEIGHT * 1) / 4,
-          //   BASE_WIDTH / 2,
-          //   (BASE_HEIGHT * 4) / 7,
-          // );
-          g.roundRect(
-            -BASE_WIDTH / 2,
-            -BASE_HEIGHT / 2,
-            BASE_WIDTH,
-            BASE_HEIGHT,
-            60,
+          g.ellipse(
+            // -BASE_WIDTH / 2,
+            0,
+            // -BASE_HEIGHT / 2,
+            // 0,
+            -(BASE_HEIGHT * 1) / 4,
+            BASE_WIDTH / 2,
+            (BASE_HEIGHT * 4) / 7,
           );
+          // g.roundRect(
+          //   -BASE_WIDTH / 2,
+          //   -BASE_HEIGHT / 2,
+          //   BASE_WIDTH,
+          //   BASE_HEIGHT,
+          //   60,
+          // );
           g.fill("#123").stroke({ width: 2, fill: gradient });
           // g.fill(0x1b5e20);
         }}
@@ -72,7 +72,7 @@ export default function GameScene({ width, height }: Props) {
 
       {/* Right */}
       <PlayerSeat x={580} y={280} />
-      <pixiContainer
+      {/* <pixiContainer
         ref={rivercontainer}
         x={-rivercontainer.current?.width / 2}
         // x={0}
@@ -82,9 +82,13 @@ export default function GameScene({ width, height }: Props) {
         <River x={220 * 1} y={0} cardtype={"SPADES"} fill={"#0000ff"} />
         <River x={220 * 2} y={0} cardtype={"HEARTS"} fill={"#ff0000"} />
         <River x={220 * 3} y={0} cardtype={"DIAMONDS"} fill={"#930093"} />
-      </pixiContainer>
+      </pixiContainer> */}
 
-      {/* <pixiContainer>
+      <pixiContainer>
+        {/* MASK SHAPE */}
+
+        {/* ref={maskRef} */}
+
         <pixiGraphics
           ref={maskRef}
           draw={(g) => {
@@ -111,7 +115,7 @@ export default function GameScene({ width, height }: Props) {
           <River x={220 * 2} y={0} cardtype={"HEARTS"} fill={"#ff0000"} />
           <River x={220 * 3} y={0} cardtype={"DIAMONDS"} fill={"#930093"} />
         </pixiContainer>
-      </pixiContainer> */}
+      </pixiContainer>
     </pixiContainer>
   );
 }

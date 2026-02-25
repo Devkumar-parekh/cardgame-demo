@@ -15,7 +15,6 @@ export default function GameScene({ width, height }: Props) {
   // const BASE_WIDTH = 1200;
   const BASE_WIDTH = 1500;
   const BASE_HEIGHT = 850;
-  // const BASE_HEIGHT = 850;
 
   const scale = Math.min(width / BASE_WIDTH, height / BASE_HEIGHT);
 
@@ -31,24 +30,12 @@ export default function GameScene({ width, height }: Props) {
     ],
   });
 
-  const maskRef = useRef<any>(null);
   return (
-    // <pixiContainer x={width / 2} y={height / 2} scale={scale}>
     <pixiContainer x={width / 2} y={height / 2} scale={scale}>
       {/* Table Background (centered world) */}
       <pixiGraphics
         draw={(g) => {
           g.clear();
-          // g.ellipse(600, 250, 80, 50);
-          // g.ellipse(
-          //   // -BASE_WIDTH / 2,
-          //   0,
-          //   // -BASE_HEIGHT / 2,
-          //   // 0,
-          //   -(BASE_HEIGHT * 1) / 4,
-          //   BASE_WIDTH / 2,
-          //   (BASE_HEIGHT * 4) / 7,
-          // );
           g.roundRect(
             -BASE_WIDTH / 2,
             -BASE_HEIGHT / 2,
@@ -58,6 +45,17 @@ export default function GameScene({ width, height }: Props) {
           );
           g.fill("#123").stroke({ width: 2, fill: gradient });
           // g.fill(0x1b5e20);
+        }}
+      />
+
+      {/* Center Pot */}
+      <pixiText
+        text="₹1200"
+        anchor={0.5}
+        style={{
+          fill: "white",
+          fontSize: 36,
+          fontWeight: "bold",
         }}
       />
 
@@ -83,35 +81,6 @@ export default function GameScene({ width, height }: Props) {
         <River x={220 * 2} y={0} cardtype={"HEARTS"} fill={"#ff0000"} />
         <River x={220 * 3} y={0} cardtype={"DIAMONDS"} fill={"#930093"} />
       </pixiContainer>
-
-      {/* <pixiContainer>
-        <pixiGraphics
-          ref={maskRef}
-          draw={(g) => {
-            g.clear();
-            g.ellipse(
-              0,
-              -(BASE_HEIGHT * 1) / 4,
-              BASE_WIDTH / 2,
-              (BASE_HEIGHT * 4) / 7,
-            );
-            g.fill("#123"); //.stroke({ width: 2, fill: gradient });
-          }}
-        />
-
-        <pixiContainer
-          mask={maskRef.current}
-          ref={rivercontainer}
-          x={-rivercontainer.current?.width / 2}
-          // x={0}
-          y={-rivercontainer.current?.height / 2}
-        >
-          <River x={0} y={0} cardtype={"CLUBS"} fill={"#00ff00"} />
-          <River x={220 * 1} y={0} cardtype={"SPADES"} fill={"#0000ff"} />
-          <River x={220 * 2} y={0} cardtype={"HEARTS"} fill={"#ff0000"} />
-          <River x={220 * 3} y={0} cardtype={"DIAMONDS"} fill={"#930093"} />
-        </pixiContainer>
-      </pixiContainer> */}
     </pixiContainer>
   );
 }
