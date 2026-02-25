@@ -1,0 +1,58 @@
+<svg width="70" height="98" viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f2027"/>
+      <stop offset="50%" stop-color="#203a43"/>
+      <stop offset="100%" stop-color="#2c5364"/>
+    </linearGradient>
+
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <pattern id="diamondPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M20 5 L35 20 L20 35 L5 20 Z"
+            fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <!-- Outer Card Border -->
+  <rect x="10" y="10" width="480" height="680" rx="30"
+        fill="url(#bgGradient)"
+        stroke="#ffffff"
+        stroke-width="12"/>
+
+  <!-- Pattern Overlay -->
+  <rect x="10" y="10" width="480" height="680" rx="30"
+        fill="url(#diamondPattern)"/>
+
+  <!-- Inner Decorative Border -->
+  <rect x="40" y="40" width="420" height="620" rx="20"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="6"
+        stroke-dasharray="12 10"/>
+
+  <!-- Center Ornament -->
+  <g transform="translate(250,350)">
+    <circle r="90" fill="url(#centerGlow)"/>
+    <circle r="70" fill="none" stroke="#ffffff" stroke-width="6"/>
+    <circle r="40" fill="none" stroke="#ffffff" stroke-width="5"/>
+
+    <line x1="-70" y1="0" x2="70" y2="0"
+          stroke="#ffffff" stroke-width="4"/>
+    <line x1="0" y1="-70" x2="0" y2="70"
+          stroke="#ffffff" stroke-width="4"/>
+  </g>
+
+  <!-- Corner Accents -->
+  <g fill="#ffffff" opacity="0.5">
+    <circle cx="70" cy="70" r="14"/>
+    <circle cx="430" cy="70" r="14"/>
+    <circle cx="70" cy="630" r="14"/>
+    <circle cx="430" cy="630" r="14"/>
+  </g>
+
+</svg>

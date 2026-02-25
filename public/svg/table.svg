@@ -1,0 +1,47 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <!-- Dark table base gradient -->
+    <radialGradient id="tableGradient" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0f5132"/>
+      <stop offset="60%" stop-color="#0a3d2a"/>
+      <stop offset="100%" stop-color="#041f16"/>
+    </radialGradient>
+
+    <!-- Edge vignette -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="80%">
+      <stop offset="60%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0.6"/>
+    </radialGradient>
+
+    <!-- Felt texture -->
+    <filter id="feltTexture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend mode="overlay"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.08"/>
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Subtle center glow -->
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#1b8f5a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+
+  </defs>
+
+  <!-- Table base -->
+  <rect width="1920" height="1080" fill="url(#tableGradient)" />
+
+  <!-- Center glow -->
+  <rect width="1920" height="1080" fill="url(#centerGlow)" />
+
+  <!-- Felt texture overlay -->
+  <rect width="1920" height="1080" filter="url(#feltTexture)" opacity="0.5"/>
+
+  <!-- Vignette edges -->
+  <rect width="1920" height="1080" fill="url(#vignette)" />
+
+</svg>
