@@ -30,7 +30,11 @@ export default function GameCanvas() {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full h-full">
+    <div
+      ref={containerRef}
+      className="w-full h-full"
+      style={{ background: "rgb(9, 15, 21)" }}
+    >
       {size.width > 0 && size.height > 0 && (
         <Application
           width={size.width}
@@ -39,6 +43,7 @@ export default function GameCanvas() {
           antialias
           autoDensity
           resolution={window.devicePixelRatio || 1}
+          // background={"rgb(9, 15, 21)"}
         >
           <GameScene width={size.width} height={size.height} />
         </Application>

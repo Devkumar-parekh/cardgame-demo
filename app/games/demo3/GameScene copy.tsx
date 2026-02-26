@@ -50,7 +50,13 @@ export default function GameScene({ width, height }: Props) {
           ref={tablemask}
           draw={(g) => {
             g.clear();
-            g.rect(-BASE_WIDTH / 2, -BASE_HEIGHT / 2, BASE_WIDTH, BASE_HEIGHT);
+            g.roundRect(
+              -BASE_WIDTH / 2,
+              -BASE_HEIGHT / 2,
+              BASE_WIDTH,
+              BASE_HEIGHT,
+              60,
+            );
             g.fill("#123").stroke({ width: 2, fill: gradient });
           }}
         />
@@ -122,37 +128,7 @@ export default function GameScene({ width, height }: Props) {
                 color: "rgb(7, 15, 23)",
               });
             }}
-          />
-
-          <pixiGraphics
-            draw={(g) => {
-              g.rect(-BASE_WIDTH / 2, -BASE_HEIGHT / 2 - 2, 60, 60);
-              g.fill(topbargradient).stroke({
-                width: 3,
-                color: "rgb(7, 15, 23)",
-              });
-            }}
-          />
-
-          <pixiGraphics
-            draw={(g) => {
-              g.rect(BASE_WIDTH / 2 - 60, -BASE_HEIGHT / 2 - 2, 60, 60);
-              g.fill(topbargradient).stroke({
-                width: 3,
-                color: "rgb(7, 15, 23)",
-              });
-            }}
-          />
-
-          <pixiGraphics
-            draw={(g) => {
-              g.rect(-130, -BASE_HEIGHT / 2 - 2, 260, 70);
-              g.fill(topbargradient).stroke({
-                width: 3,
-                color: "rgb(7, 15, 23)",
-              });
-            }}
-          />
+          ></pixiGraphics>
         </pixiContainer>
       </pixiContainer>
     </>

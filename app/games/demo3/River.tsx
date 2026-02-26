@@ -113,6 +113,27 @@ export default function River({ x, y, cardtype, fill }: Props) {
           // })
         }
       />
+
+      <pixiGraphics
+        // ref={cardcontainerref}
+
+        x={5}
+        y={30}
+        draw={(g) => {
+          g.clear();
+          // for (let i = 0; i < 13; i++) {
+          //   let x = i * 10 + 5;
+          //   if (i % 2 == 0 && i != 0) x = i * 10 - 20;
+          //   g.roundRect(x, i * 35 + 15, 55, 65, 5);
+          // }
+          for (let i = 0; i < 13; i++) {
+            let x = i * 10 + 5;
+            if (i % 2 == 0 && i != 0) x = i * 10 - 20;
+            g.roundRect(x, i * 35 + 15, 55, 65, 5);
+          }
+          g.fill(0xffffff).stroke({ width: 1, color: "black" });
+        }}
+      />
     </pixiContainer>
   );
 }
