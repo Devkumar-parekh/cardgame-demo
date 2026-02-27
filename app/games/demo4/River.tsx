@@ -62,9 +62,9 @@ export default function River({ x, y, cardtype, fill, riverArr = [] }: Props) {
       // { offset: 0, color: 0xff0000 },
       { offset: 0, color: fill },
 
-      { offset: 0.1, color: 0xffffff },
+      { offset: 0.3, color: 0xffffff },
       // { offset: 0.4, color: fill },
-      { offset: 0.5, color: 0xffffff },
+      { offset: 0.4, color: 0xffffff },
       // { offset: 1, color: 0xffff00 },
       { offset: 1, color: fill },
     ],
@@ -122,7 +122,7 @@ export default function River({ x, y, cardtype, fill, riverArr = [] }: Props) {
       <pixiGraphics
         draw={(g) => {
           g.clear();
-          g.rect(0, 0, 200, 830);
+          g.rect(0, 0, 220, 830);
           // g.fill(bggradient).stroke({ width: 3, fill: bordergradient });
           g.fill(radialBg).stroke({ width: 3, fill: bordergradient });
           // g.fill(0xffff66).stroke({ width: 3, color: "blue" });

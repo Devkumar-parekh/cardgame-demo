@@ -56,17 +56,21 @@ export default function GameScene({ width, height }: Props) {
         />
         <pixiContainer mask={tablemask.current}>
           {/* Table Background (centered world) */}
-
           <pixiGraphics
+            ref={maskRef}
+            x={-BASE_WIDTH * 0.4}
+            y={BASE_HEIGHT / 2 - 175}
             draw={(g) => {
               g.clear();
-              g.ellipse(
+              g.roundRect(
                 0,
-                -(BASE_HEIGHT * 1) / 4,
-                BASE_WIDTH / 2,
-                (BASE_HEIGHT * 4) / 7,
-              );
-              g.fill("#123").stroke({ width: 2, fill: gradient });
+                -BASE_HEIGHT * 0.8,
+                BASE_WIDTH * 0.8,
+                BASE_HEIGHT * 0.8,
+                355,
+              )
+                .fill("#123")
+                .stroke({ width: 2, fill: gradient });
             }}
           />
 
@@ -85,15 +89,17 @@ export default function GameScene({ width, height }: Props) {
           <pixiContainer ref={rivercontainer}>
             <pixiGraphics
               ref={maskRef}
+              x={-BASE_WIDTH * 0.4}
+              y={BASE_HEIGHT / 2 - 175}
               draw={(g) => {
                 g.clear();
-                g.ellipse(
+                g.roundRect(
                   0,
-                  -(BASE_HEIGHT * 1) / 4,
-                  BASE_WIDTH / 2,
-                  (BASE_HEIGHT * 4) / 7,
-                );
-                g.fill("#123"); //.stroke({ width: 2, fill: gradient });
+                  -BASE_HEIGHT * 0.8,
+                  BASE_WIDTH * 0.8,
+                  BASE_HEIGHT * 0.8,
+                  355,
+                ).fill("#123");
               }}
             />
 
@@ -105,28 +111,28 @@ export default function GameScene({ width, height }: Props) {
             >
               <River
                 x={0}
-                y={20}
+                y={-50}
                 cardtype={"CLUBS"}
                 fill={"#00ff00"}
                 riverArr={[{}, {}, {}, {}, {}]} // Example riverArr with 5 cards
               />
               <River
-                x={220 * 1}
-                y={20}
+                x={230 * 1}
+                y={-50}
                 cardtype={"SPADES"}
                 fill={"#0000ff"}
                 riverArr={[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]} // Example riverArr with 5 cards
               />
               <River
-                x={220 * 2}
-                y={20}
+                x={230 * 2}
+                y={-50}
                 cardtype={"HEARTS"}
                 fill={"#ff0000"}
                 riverArr={[{}, {}, {}]}
               />
               <River
-                x={220 * 3}
-                y={20}
+                x={230 * 3}
+                y={-50}
                 cardtype={"DIAMONDS"}
                 fill={"#930093"}
                 riverArr={[{}, {}, {}, {}, {}, {}]}
@@ -173,6 +179,32 @@ export default function GameScene({ width, height }: Props) {
                 });
               }}
             />
+          </pixiContainer>
+
+          <pixiContainer x={-BASE_WIDTH * 0.4} y={265}>
+            <pixiGraphics
+              draw={(g) => {
+                g.roundRect(0, 0, BASE_WIDTH * 0.8, BASE_HEIGHT * 0.18, 100);
+                g.fill(topbargradient);
+              }}
+            />
+            {Array(13)
+              .fill(1)
+              .map((_, i) => {
+                // {[1, 2, 3, 4, 5, 6, 7].map((_, i) => {
+                return (
+                  <pixiGraphics
+                    key={i}
+                    draw={(g) => {
+                      // let x = 20;
+
+                      g.roundRect(i * 70 + 100, 30, 60, 70, 5)
+                        .fill("white")
+                        .stroke({ width: 1, color: "black" });
+                    }}
+                  />
+                );
+              })}
           </pixiContainer>
         </pixiContainer>
       </pixiContainer>
