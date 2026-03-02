@@ -1,8 +1,56 @@
+"use client";
 import { Container, FillGradient, Graphics, Text } from "pixi.js";
 import { extend, useApplication } from "@pixi/react";
 import PlayerSeat from "./PlayerSeat";
 import River from "./River";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+
+let soundManager: any = null;
+let isLoaded = false;
+
+export const loadSounds = async () => {
+  if (isLoaded) return;
+
+  const { sound, filters } = await import("@pixi/sound");
+
+  const stereo = new filters.StereoFilter(); // -1 = left, 1 = right
+  const eq = new filters.EqualizerFilter(
+    -40,
+    -40,
+    -39,
+    -40,
+    -25,
+    -2,
+    1,
+    40,
+    -27,
+    -40,
+  );
+
+  // new PIXI.sound.filters.TelephoneFilter()
+  soundManager = sound;
+
+  soundManager.add("card", {
+    url: "/audio/soundreality-sound-of-mouse-click-4-478760.mp3",
+
+    volume: 0.05,
+  });
+
+  soundManager.add("bgm", {
+    // url: "/audio/toucanmusic-casino-royale-442621.mp3",
+    url: "/audio/musical.mp3",
+    volume: 0.03,
+    loop: true,
+  });
+
+  soundManager.filters = [stereo, eq];
+
+  isLoaded = true;
+};
+
+export const playSFX = (name: string) => {
+  soundManager?.play(name);
+};
 
 extend({ Container, Graphics, Text });
 
@@ -42,10 +90,35 @@ export default function GameScene({ width, height }: Props) {
   const maskRef = useRef<any>(null);
 
   const tablemask = useRef<any>(null);
+  useEffect(() => {
+    const init = async () => {
+      await loadSounds();
+      playSFX("bgm");
+    };
+
+    window.addEventListener("pointerdown", init, { once: true });
+
+    return () => {
+      window.removeEventListener("pointerdown", init);
+      // stopBGM();
+      soundManager?.stop("bgm");
+    };
+  }, []);
+
+  const handleCardClick = () => {
+    playSFX("card");
+  };
+
   return (
     // <pixiContainer x={width / 2} y={height / 2} scale={scale}>
     <>
-      <pixiContainer x={width / 2} y={height / 2} scale={scale}>
+      <pixiContainer
+        eventMode="static"
+        onPointerDown={handleCardClick}
+        x={width / 2}
+        y={height / 2}
+        scale={scale}
+      >
         <pixiGraphics
           ref={tablemask}
           draw={(g) => {
